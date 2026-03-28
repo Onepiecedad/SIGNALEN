@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280, initial-scale=1.0">
+    <title>SIGNALEN</title>
+    <link rel="stylesheet" href="slides.css">
+    <style>
+      .slide-container { padding: 50px 80px 20px; }
+      .section-header { display: flex; align-items: center; gap: 20px; margin-bottom: 24px; }
+      .section-num { font-size: 48px; }
+      h1 { font-size: 48px; margin: 0; }
+      .intro-text { font-size: 17px; line-height: 1.6; margin-bottom: 20px; max-width: 900px; }
+      .stats-row {
+        display: flex; margin-bottom: 24px;
+        background: var(--card-bg-light);
+      }
+      .stat-item {
+        flex: 1; text-align: center; padding: 16px 0;
+        border-right: 1px solid rgba(0,180,216,0.15);
+      }
+      .stat-item:last-child { border-right: none; }
+      .stat-value {
+        font-family: var(--font-heading); font-size: 40px;
+        color: var(--accent); line-height: 1;
+      }
+      .stat-label {
+        font-size: 12px; color: var(--text-secondary);
+        text-transform: uppercase; letter-spacing: 1px; margin-top: 6px;
+      }
+      .hw-wrapper {
+        flex: 1; overflow: auto;
+        background: var(--card-bg-light);
+        border: 1px solid rgba(0,180,216,0.15);
+      }
+      .hw-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+      .hw-table th {
+        text-align: left; padding: 10px 16px;
+        font-family: var(--font-heading); font-size: 15px;
+        color: var(--accent); text-transform: uppercase;
+        letter-spacing: 1px;
+        border-bottom: 1px solid rgba(0,180,216,0.15);
+      }
+      .hw-table td {
+        padding: 8px 16px;
+        border-bottom: 1px solid rgba(255,255,255,0.04);
+      }
+      .hw-table td:first-child {
+        color: var(--text-primary); font-weight: 600;
+      }
+
+      @media (max-width: 768px) {
+        .slide-container { padding: 24px 20px 20px !important; }
+        .section-header { gap: 12px !important; margin-bottom: 16px !important; }
+        .section-num { font-size: 28px !important; }
+        h1 { font-size: 28px !important; }
+        .intro-text { font-size: 14px !important; margin-bottom: 16px !important; }
+        .stats-row { flex-wrap: wrap !important; gap: 0 !important; }
+        .stat-item { flex: 0 0 50% !important; padding: 12px 0 !important; }
+        .stat-value { font-size: 32px !important; }
+        .stat-label { font-size: 10px !important; }
+        .hw-table { font-size: 12px !important; }
+        .hw-table th { font-size: 13px !important; padding: 8px 10px !important; }
+        .hw-table td { padding: 6px 10px !important; }
+      }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="section-header">
+            <div class="section-num">10</div>
+            <h1>Hårdvaruarkitektur</h1>
+        </div>
+
+        <div class="intro-text">
+            Varje puzzle har en egen RP2040 Pico W. Alla kommunicerar via MQTT med en central hub (Raspberry Pi 4) som kör spellogik, adaptiv svårighet, konsekvenser och atmosfärstyrning. Dashboard ansluter via WebSocket.
+        </div>
+
+        <div class="stats-row">
+            <div class="stat-item">
+                <div class="stat-value">13</div>
+                <div class="stat-label">RP2040-enheter</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">1</div>
+                <div class="stat-label">Central hub (RPi 4)</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">15</div>
+                <div class="stat-label">E-lås / reläer</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">30+</div>
+                <div class="stat-label">Sensorer</div>
+            </div>
+        </div>
+
+        <div class="hw-wrapper">
+            <table class="hw-table">
+                <thead>
+                    <tr>
+                        <th>Puzzle</th>
+                        <th>Sensorer</th>
+                        <th>Aktuatorer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Säkringar</td><td>3x reed switch</td><td>Belysningsrelä</td></tr>
+                    <tr><td>Radio</td><td>Rotary encoder</td><td>LED + högtalare</td></tr>
+                    <tr><td>Sonar</td><td>2x pot. + knapp</td><td>LCD + e-lås</td></tr>
+                    <tr><td>Passage</td><td>RFID + knappsats</td><td>E-lås + LED-strip</td></tr>
+                    <tr><td>Terminaler</td><td>4x (3 knappar + OLED)</td><td>4x display + högtalare</td></tr>
+                    <tr><td>Frekvens</td><td>5x linjär pot.</td><td>LED-strip</td></tr>
+                    <tr><td>Videofix</td><td>Komponentslots</td><td>Skärm + högtalare</td></tr>
+                    <tr><td>Flykt</td><td>2x knappsats</td><td>2x e-lås + ljus/ljud</td></tr>
+                    <tr><td>Atmosfär</td><td>Trycksensorer</td><td>LED + högtalare</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

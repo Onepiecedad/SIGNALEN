@@ -6,31 +6,109 @@
     <title>SIGNALEN</title>
     <link rel="stylesheet" href="slides.css">
     <style>
-      .slide-container { padding: 50px 80px 0 80px; }
+      .slide-container { padding: 50px 80px 30px 80px; }
       .act-header {
-        border-left-color: var(--accent); margin-bottom: 20px;
-        padding-top: 15px; padding-bottom: 15px;
+        border-left: 4px solid var(--danger);
+        padding-left: 24px;
+        margin-bottom: 24px;
       }
+      .act-header .act-title { font-size: 42px; }
       .act-intro {
-        font-style: italic; font-size: 18px; color: var(--danger); margin-bottom: 18px;
-        line-height: 1.5; border: 1px solid rgba(230, 57, 70, 0.2);
-        background: rgba(230, 57, 70, 0.05); padding: 12px;
+        font-style: italic; font-size: 17px; color: var(--danger);
+        line-height: 1.5; margin-bottom: 28px; max-width: 800px;
       }
-      .subheading { font-family: var(--font-heading); font-size: 24px; color: var(--text-primary); margin-bottom: 8px; text-transform: uppercase; }
-      .desc-text { font-size: 16px; line-height: 1.5; margin-bottom: 12px; }
-      .progression-table { background: var(--card-bg-light); border: 1px solid var(--accent-dim); }
-      .progression-table th { font-size: 18px; padding: 8px 10px; border-bottom: 1px solid var(--accent-glow); }
-      .progression-table td { padding: 8px 10px; font-size: 15px; border-bottom: 1px solid rgba(184, 201, 208, 0.1); vertical-align: middle; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-      .progression-table tr:last-child td { border-bottom: none; }
-      .video-row { background: rgba(0, 180, 216, 0.08); }
-      .fix-row { background: transparent; }
-      .video-row td:first-child { font-family: var(--font-heading); font-size: 20px; color: var(--text-primary); }
-      .fix-label { font-family: var(--font-heading); color: var(--danger); font-size: 16px; }
-      .audio-text { font-style: italic; color: var(--text-primary); }
-      .clarity-container { display: flex; align-items: center; gap: 6px; }
-      .clarity-bar-bg { width: 60px; height: 5px; background: rgba(255, 255, 255, 0.1); overflow: hidden; }
-      .clarity-bar-fill { height: 100%; background: var(--accent); box-shadow: 0 0 5px var(--accent); }
-      strong { color: var(--text-primary); }
+      .subheading {
+        font-family: var(--font-heading); font-size: 22px;
+        color: var(--text-primary); text-transform: uppercase;
+        letter-spacing: 1px; margin-bottom: 8px;
+      }
+      .desc-text { font-size: 15px; color: var(--text-secondary); margin-bottom: 24px; }
+
+      /* Signal progression timeline */
+      .signal-timeline {
+        display: flex; flex: 1; gap: 0;
+      }
+      .signal-step {
+        flex: 1; display: flex; flex-direction: column;
+        padding: 0 16px;
+        border-right: 1px solid rgba(0,180,216,0.15);
+      }
+      .signal-step:last-child { border-right: none; }
+      .step-segment {
+        font-family: var(--font-heading); font-size: 24px;
+        color: var(--text-primary); margin-bottom: 8px;
+      }
+      .clarity-meta {
+        display: flex; justify-content: space-between;
+        align-items: center; margin-bottom: 4px;
+      }
+      .clarity-label {
+        font-size: 10px; text-transform: uppercase;
+        letter-spacing: 1px; color: var(--text-secondary);
+      }
+      .clarity-pct {
+        font-size: 12px; font-family: var(--font-heading);
+        color: var(--text-body);
+      }
+      .clarity-pct.complete { color: var(--accent); }
+      .clarity-track {
+        width: 100%; height: 4px;
+        background: rgba(255,255,255,0.08);
+        overflow: hidden; margin-bottom: 10px;
+      }
+      .clarity-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--danger), var(--accent));
+        box-shadow: 0 0 6px var(--danger);
+      }
+      .clarity-fill.complete {
+        background: var(--accent);
+        box-shadow: 0 0 8px var(--accent);
+      }
+      .step-audio {
+        font-style: italic; font-size: 13px; color: var(--text-body);
+        line-height: 1.4; margin-bottom: 12px; min-height: 36px;
+      }
+      .step-audio.complete {
+        font-style: normal; color: var(--accent);
+      }
+      .fix-card {
+        margin-top: auto;
+        background: rgba(230,57,70,0.15);
+        border: 1px solid rgba(230,57,70,0.3);
+        padding: 8px 12px; font-size: 12px; line-height: 1.4;
+      }
+      .fix-room {
+        font-family: var(--font-heading); color: var(--danger);
+        font-size: 12px; text-transform: uppercase;
+      }
+      .fix-action { color: var(--text-body); margin-top: 2px; }
+      .complete-card {
+        margin-top: auto;
+        background: rgba(0,180,216,0.08);
+        border: 1px solid rgba(0,180,216,0.25);
+        padding: 8px 12px; font-size: 12px;
+        color: var(--accent); font-family: var(--font-heading);
+        text-transform: uppercase; text-align: center;
+      }
+
+      @media (max-width: 768px) {
+        .slide-container { padding: 24px 20px 20px !important; }
+        .act-header { padding-left: 16px !important; margin-bottom: 16px !important; }
+        .act-header .act-title { font-size: 24px !important; }
+        .act-intro { font-size: 14px !important; margin-bottom: 16px !important; }
+        .subheading { font-size: 18px !important; margin-bottom: 4px !important; }
+        .desc-text { font-size: 13px !important; margin-bottom: 16px !important; }
+        .signal-timeline { flex-direction: column !important; gap: 6px !important; }
+        .signal-step {
+          border-right: none !important;
+          border-bottom: 1px solid rgba(0,180,216,0.15) !important;
+          padding: 10px 0 !important;
+        }
+        .signal-step:last-child { border-bottom: none !important; }
+        .step-segment { font-size: 20px !important; }
+        .step-audio { min-height: auto !important; }
+      }
     </style>
 </head>
 <body>
@@ -38,94 +116,82 @@
         <div class="act-header">
             <div class="act-title">AKT 2 — SJÄLVFÖRSTÖRELSE AKTIVERAD</div>
         </div>
-        
+
         <div class="act-intro">
             Klockan tickar. Ett videomeddelande hackar och brusar. En person i uniform, i panik. Det enda hörbara: "...självförstöring... avbryt... följ instruktionerna..."
         </div>
-        
+
         <div class="subheading">Videomeddelandet — hjärtat i Akt 2</div>
-        <div class="desc-text">Fem segment. Bara det första visas från början. För varje trasig komponent klarnar meddelandet.</div>
-        
-        <table class="progression-table">
-            <thead>
-                <tr>
-                    <th class="col-w-10">Segment</th>
-                    <th class="col-w-15">Klarhet</th>
-                    <th class="col-w-35">Ljud</th>
-                    <th class="col-w-40">Fix</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="video-row">
-                    <td>1/5</td>
-                    <td>
-                        <div class="clarity-container">
-                            <div class="clarity-bar-bg"><div class="clarity-bar-fill" class="clarity-20"></div></div>
-                            <span>20%</span>
-                        </div>
-                    </td>
-                    <td class="audio-text">"...självförstöring... avbryt..."</td>
-                    <td>—</td>
-                </tr>
-                <tr class="fix-row">
-                    <td class="fix-label">Fix A</td>
-                    <td>—</td>
-                    <td>—</td>
-                    <td><strong>Rum 1:</strong> Trasigt relä — reservdel i Arkivet</td>
-                </tr>
-                <tr class="video-row">
-                    <td>2/5</td>
-                    <td>
-                        <div class="clarity-container">
-                            <div class="clarity-bar-bg"><div class="clarity-bar-fill" class="col-w-40"></div></div>
-                            <span>40%</span>
-                        </div>
-                    </td>
-                    <td class="audio-text">"...fyra stationer... synkronisera..."</td>
-                    <td>—</td>
-                </tr>
-                <tr class="fix-row">
-                    <td class="fix-label">Fix B</td>
-                    <td>—</td>
-                    <td>—</td>
-                    <td><strong>Rum 2:</strong> Nyckelskåp synligt — låst tills Rum 1 återställs</td>
-                </tr>
-                <tr class="video-row">
-                    <td>3/5</td>
-                    <td>
-                        <div class="clarity-container">
-                            <div class="clarity-bar-bg"><div class="clarity-bar-fill" class="clarity-60"></div></div>
-                            <span>60%</span>
-                        </div>
-                    </td>
-                    <td class="audio-text">"...nödprotokollet... två nycklar..."</td>
-                    <td>—</td>
-                </tr>
-                <tr class="fix-row">
-                    <td class="fix-label">Fix C</td>
-                    <td>—</td>
-                    <td>—</td>
-                    <td><strong>Arkivet:</strong> Kalibrera frekvensmodul</td>
-                </tr>
-                <tr class="video-row">
-                    <td>4/5</td>
-                    <td>
-                        <div class="clarity-container">
-                            <div class="clarity-bar-bg"><div class="clarity-bar-fill" class="clarity-80"></div></div>
-                            <span>80%</span>
-                        </div>
-                    </td>
-                    <td class="audio-text">"...följ deaktiveringsprotokollet..."</td>
-                    <td>—</td>
-                </tr>
-                <tr class="fix-row">
-                    <td class="fix-label">Fix D</td>
-                    <td>—</td>
-                    <td>—</td>
-                    <td><strong>Rum 1 + 2:</strong> Sista komponenten — kräver båda rummen</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="desc-text">Fem segment. Bara det första visas från början. För varje trasig komponent spelarna reparerar klarnar meddelandet.</div>
+
+        <div class="signal-timeline">
+            <div class="signal-step">
+                <div class="step-segment">1/5</div>
+                <div class="clarity-meta">
+                    <span class="clarity-label">Signal</span>
+                    <span class="clarity-pct">20%</span>
+                </div>
+                <div class="clarity-track"><div class="clarity-fill" style="width:20%"></div></div>
+                <div class="step-audio">"...självförstöring... avbryt..."</div>
+                <div class="fix-card">
+                    <div class="fix-room">Rum 1</div>
+                    <div class="fix-action">Trasigt relä — reservdel i Arkivet</div>
+                </div>
+            </div>
+
+            <div class="signal-step">
+                <div class="step-segment">2/5</div>
+                <div class="clarity-meta">
+                    <span class="clarity-label">Signal</span>
+                    <span class="clarity-pct">40%</span>
+                </div>
+                <div class="clarity-track"><div class="clarity-fill" style="width:40%"></div></div>
+                <div class="step-audio">"...fyra stationer... synkronisera..."</div>
+                <div class="fix-card">
+                    <div class="fix-room">Rum 2</div>
+                    <div class="fix-action">Nyckelskåp synligt — låst tills Rum 1 återställs</div>
+                </div>
+            </div>
+
+            <div class="signal-step">
+                <div class="step-segment">3/5</div>
+                <div class="clarity-meta">
+                    <span class="clarity-label">Signal</span>
+                    <span class="clarity-pct">60%</span>
+                </div>
+                <div class="clarity-track"><div class="clarity-fill" style="width:60%"></div></div>
+                <div class="step-audio">"...nödprotokollet... två nycklar..."</div>
+                <div class="fix-card">
+                    <div class="fix-room">Arkivet</div>
+                    <div class="fix-action">Kalibrera frekvensmodul</div>
+                </div>
+            </div>
+
+            <div class="signal-step">
+                <div class="step-segment">4/5</div>
+                <div class="clarity-meta">
+                    <span class="clarity-label">Signal</span>
+                    <span class="clarity-pct">80%</span>
+                </div>
+                <div class="clarity-track"><div class="clarity-fill" style="width:80%"></div></div>
+                <div class="step-audio">"...följ deaktiveringsprotokollet..."</div>
+                <div class="fix-card">
+                    <div class="fix-room">Rum 1 + 2</div>
+                    <div class="fix-action">Sista komponenten — kräver båda rummen</div>
+                </div>
+            </div>
+
+            <div class="signal-step">
+                <div class="step-segment">5/5</div>
+                <div class="clarity-meta">
+                    <span class="clarity-label">Signal</span>
+                    <span class="clarity-pct complete">100%</span>
+                </div>
+                <div class="clarity-track"><div class="clarity-fill complete" style="width:100%"></div></div>
+                <div class="step-audio complete">"Fullständigt meddelande avslöjas"</div>
+                <div class="complete-card">Meddelandet komplett</div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

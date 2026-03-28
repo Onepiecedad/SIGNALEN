@@ -16,8 +16,9 @@ const slides = [
     "slides/slide_11_akt_2.html",
     "slides/slide_12_akt_3.html",
     "slides/slide_13_sv\u00e5righetsgrad.html",
-    "slides/slide_14_dashboard_arkitektur.html",
-    "slides/slide_15_budget_slutord.html"
+    "slides/slide_14_dashboard.html",
+    "slides/slide_15_hardvaru.html",
+    "slides/slide_16_budget_slutord.html"
 ];
 
 let current = 0;

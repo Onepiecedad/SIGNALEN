@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280, initial-scale=1.0">
+    <title>SIGNALEN</title>
+    <link rel="stylesheet" href="slides.css">
+    <style>
+      .slide-container { position: relative; padding: 0; }
+      .hero-section { position: relative; width: 100%; height: 260px; overflow: hidden; }
+      .hero-video { width: 100%; height: 100%; object-fit: cover; }
+      .hero-gradient { position: absolute; bottom: 0; left: 0; width: 100%; height: 140px; background: linear-gradient(to bottom, rgba(10, 14, 23, 0) 0%, rgba(10, 14, 23, 1) 100%); }
+      .header { position: absolute; bottom: 16px; left: 80px; z-index: 2; display: flex; align-items: center; gap: 20px; }
+      .section-num { font-size: 48px; }
+      h1 { font-size: 48px; margin: 0; }
+      .content { padding: 24px 80px 0; flex: 1; display: flex; flex-direction: column; }
+      .intro-text { font-size: 18px; line-height: 1.6; margin-bottom: 28px; max-width: 800px; }
+      .capabilities {
+        display: grid; grid-template-columns: 1fr 1fr;
+        gap: 16px; flex: 1;
+      }
+      .cap-item {
+        border-left: 3px solid var(--accent);
+        padding: 4px 0 4px 20px;
+      }
+      .cap-title {
+        font-family: var(--font-heading); font-size: 20px;
+        color: var(--text-primary); text-transform: uppercase;
+        margin-bottom: 6px;
+      }
+      .cap-desc {
+        font-size: 15px; line-height: 1.5; color: var(--text-body);
+      }
+
+      @media (max-width: 768px) {
+        .hero-section { height: 200px !important; }
+        .header { left: 20px !important; bottom: 12px !important; gap: 12px !important; }
+        .section-num { font-size: 28px !important; }
+        h1 { font-size: 28px !important; }
+        .content { padding: 20px 20px 0 !important; }
+        .intro-text { font-size: 15px !important; margin-bottom: 20px !important; }
+        .capabilities { grid-template-columns: 1fr !important; gap: 12px !important; }
+        .cap-item { padding-left: 14px !important; }
+        .cap-title { font-size: 16px !important; }
+        .cap-desc { font-size: 13px !important; }
+      }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="hero-section">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="../videos/Dashboard.mp4" type="video/mp4">
+            </video>
+            <div class="hero-gradient"></div>
+            <div class="header">
+                <div class="section-num">09</div>
+                <h1>Dashboard — Game Master Control</h1>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="intro-text">
+                Webbaserad realtidspanel i personalrummet. React + WebSocket till alla RP2040-controllers. Game master ser allt — och kan styra allt.
+            </div>
+
+            <div class="capabilities">
+                <div class="cap-item">
+                    <div class="cap-title">Realtidsöversikt</div>
+                    <div class="cap-desc">Status, tid kvar, lösta puzzles, svårighetsnivå och atmosfärnivå — allt live.</div>
+                </div>
+                <div class="cap-item">
+                    <div class="cap-title">Puzzle-detalj</div>
+                    <div class="cap-desc">Namn, status, tid, försök, konsekvenser. Sensordata i realtid. Automatisk varning vid >3 min utan framsteg.</div>
+                </div>
+                <div class="cap-item">
+                    <div class="cap-title">Hint-system</div>
+                    <div class="cap-desc">Tre nivåer med AI-förslag. Leverans via stationens AI-röst eller OLED-display direkt i rummet.</div>
+                </div>
+                <div class="cap-item">
+                    <div class="cap-title">Sessionhistorik</div>
+                    <div class="cap-desc">Varje session sparas. Trender över tid. Komponenthälsa per enhet för prediktivt underhåll.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
