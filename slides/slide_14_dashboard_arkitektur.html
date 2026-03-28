@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280, initial-scale=1.0">
+    <title>SIGNALEN</title>
+    <link rel="stylesheet" href="slides.css">
+    <style>
+      .slide-container { position: relative; }
+      .hero-section { position: relative; width: 100%; height: 180px; overflow: hidden; }
+      .hero-video { width: 100%; height: 100%; object-fit: cover; }
+      .hero-gradient { position: absolute; bottom: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to bottom, rgba(10, 14, 23, 0) 0%, rgba(10, 14, 23, 1) 100%); }
+      .header { position: absolute; bottom: 10px; left: 60px; z-index: 2; }
+      .section-num { font-size: 36px; margin-right: 15px; }
+      h1 { font-size: 36px; }
+      .content-section { padding: 15px 60px 0 60px; flex: 1; display: flex; gap: 40px; }
+      .left-col { flex: 1; display: flex; flex-direction: column; }
+      .right-col { flex: 1; display: flex; flex-direction: column; }
+      h2 { font-size: 22px; margin-bottom: 6px; }
+      p { font-size: 13px; line-height: 1.4; margin-bottom: 12px; }
+      .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px; }
+      .feature-card { background: var(--card-bg-light); border: 1px solid var(--accent-dim); padding: 10px; }
+      .feature-title { font-family: var(--font-heading); font-size: 15px; color: var(--accent); margin-bottom: 4px; text-transform: uppercase; }
+      .feature-text { font-size: 12px; line-height: 1.3; }
+      .control-buttons { display: flex; flex-wrap: wrap; gap: 6px; }
+      .btn {
+        background: rgba(0, 14, 23, 0.5); border: 1px solid var(--accent);
+        color: var(--text-primary); font-family: var(--font-heading);
+        font-size: 11px; padding: 4px 8px; text-transform: uppercase; letter-spacing: 1px;
+      }
+      .stats-row { margin-bottom: 12px; }
+      .stat-item { text-align: center; }
+      .stat-value { font-size: 26px; color: var(--accent); line-height: 1; }
+      .stat-label { font-size: 10px; margin-top: 4px; }
+      .hw-table th, .hw-table td { padding: 4px 8px; font-size: 12px; }
+      .hw-table th { font-size: 13px; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="hero-section">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="../videos/Dashboard.mp4" type="video/mp4">
+            </video>
+            <div class="hero-gradient"></div>
+            <div class="header">
+                <div class="section-num">09 & 10</div>
+                <h1>Dashboard & Hårdvaruarkitektur</h1>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="left-col">
+                <h2>09 Dashboard — Game Master Control</h2>
+                <p>Webbaserad realtidspanel i personalrummet. React + WebSocket till alla RP2040-controllers.</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-title">Översikt</div>
+                        <div class="feature-text">Status, tid kvar, lösta puzzles, svårighetsnivå, atmosfärnivå</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-title">Puzzle-detalj</div>
+                        <div class="feature-text">Namn, status, tid, försök, konsekvenser. Realtids-sensordata. 'Fast'-indikator (>3 min utan framsteg)</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-title">Hint-panel</div>
+                        <div class="feature-text">Tre nivåer. AI-förslag. Leverans via stationens AI-röst eller OLED</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-title">Historik</div>
+                        <div class="feature-text">Varje session sparas. Trender över tid. Komponenthälsa per enhet</div>
+                    </div>
+                </div>
+                
+                <div class="control-buttons">
+                    <div class="btn">STARTA SESSION</div>
+                    <div class="btn">PAUSA</div>
+                    <div class="btn">RESET</div>
+                    <div class="btn">NÖDÖPPNA</div>
+                    <div class="btn">MANUELL HINT</div>
+                    <div class="btn">OVERRIDE SVÅRIGHET</div>
+                    <div class="btn">OVERRIDE ATMOSFÄR</div>
+                </div>
+            </div>
+            
+            <div class="right-col">
+                <h2>10 Hårdvaruarkitektur</h2>
+                <p>Varje puzzle har en egen RP2040 Pico W. Alla kommunicerar via MQTT med central hub (Raspberry Pi 4). Hubben kör spellogik, adaptiv svårighet, konsekvenser och atmosfärstyrning. Dashboard via WebSocket.</p>
+                
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <div class="stat-value">13</div>
+                        <div class="stat-label">RP2040-enheter</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">1</div>
+                        <div class="stat-label">Central hub (RPi 4)</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">15</div>
+                        <div class="stat-label">E-lås/reläer</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">30</div>
+                        <div class="stat-label">Sensorer</div>
+                    </div>
+                </div>
+                
+                <table class="hw-table">
+                    <thead>
+                        <tr>
+                            <th>Puzzle</th>
+                            <th>Sensorer</th>
+                            <th>Aktuatorer</th>
+                            <th>Controller</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Säkringar</td><td>3x reed switch</td><td>Belysningsrelä</td><td>RP2040</td></tr>
+                        <tr><td>Radio</td><td>Rotary encoder</td><td>LED + högtalare</td><td>RP2040</td></tr>
+                        <tr><td>Sonar</td><td>2x pot. + knapp</td><td>LCD + e-lås</td><td>RP2040</td></tr>
+                        <tr><td>Passage</td><td>RFID + knappsats</td><td>E-lås + LED-strip</td><td>RP2040</td></tr>
+                        <tr><td>Terminaler</td><td>4x (3 knappar + OLED)</td><td>4x display + högtalare</td><td>4x RP2040</td></tr>
+                        <tr><td>Frekvens</td><td>5x linjär pot.</td><td>LED-strip</td><td>RP2040</td></tr>
+                        <tr><td>Videofix</td><td>Komponentslots</td><td>Skärm + högtalare</td><td>RP2040</td></tr>
+                        <tr><td>Flykt</td><td>2x knappsats</td><td>2x e-lås + ljus/ljud</td><td>RP2040</td></tr>
+                        <tr><td>Atmosfär</td><td>Trycksensorer</td><td>LED + högtalare</td><td>RP2040</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

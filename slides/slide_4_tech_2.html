@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280, initial-scale=1.0">
+    <title>SIGNALEN</title>
+    <link rel="stylesheet" href="slides.css">
+    <style>
+      .slide-container { padding: 60px 80px 0 80px; }
+      .header { margin-bottom: 40px; }
+      .content-wrapper { display: flex; gap: 50px; }
+      .cards-column {
+        flex: 0 0 55%; display: grid;
+        grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;
+      }
+      .feature-card { padding: 25px; }
+      .card-title { margin-bottom: 10px; }
+      .video-column {
+        flex: 0 0 40%; display: flex;
+        flex-direction: column; justify-content: flex-start; align-items: center;
+      }
+      .video-container { width: 100%; }
+      video { width: 100%; height: auto; display: block; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="section-num">02</div>
+            <h1>Teknologiska nyckelfunktioner (Forts.)</h1>
+        </div>
+        
+        <div class="content-wrapper">
+            <div class="cards-column">
+                <div class="feature-card">
+                    <div class="card-title"><span>5.</span> Dynamiskt rum-narrativ</div>
+                    <div class="card-desc">Videomeddelandet klarnar steg för steg. AI-rösten beter sig annorlunda. Övervakningskameror visar störningar. Allt reagerar på progression — samma rum, aldrig samma upplevelse.</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="card-title"><span>6.</span> Prediktivt komponentunderhåll</div>
+                    <div class="card-desc">Varje sensor, lås och knapp loggar cykler. Dashboarden varnar innan något går sönder. Noll överraskande driftavbrott.</div>
+                </div>
+                
+                <div class="feature-card full-width">
+                    <div class="card-title"><span>7.</span> Post-game analytics &amp; delning</div>
+                    <div class="card-desc">Personlig resultatrapport med agent-ranking. QR-kod för Instagram Story. Automatisk delning driver organisk marknadsföring. Varje session genererar data som förbättrar nästa.</div>
+                </div>
+            </div>
+            
+            <div class="video-column">
+                <div class="video-container">
+                    <video autoplay muted loop playsinline>
+                        <source src="../videos/Resultat.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">Delbar resultatskärm efter spelet</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

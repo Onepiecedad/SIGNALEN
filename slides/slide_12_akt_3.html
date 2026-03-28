@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280, initial-scale=1.0">
+    <title>SIGNALEN</title>
+    <link rel="stylesheet" href="slides.css">
+    <style>
+      .slide-container { padding: 40px 80px 0 80px; }
+      .act-header { border-left-color: var(--danger); background: linear-gradient(to right, rgba(230, 57, 70, 0.15), transparent); margin-bottom: 12px; }
+      .intro-text { font-size: 16px; margin-bottom: 12px; }
+      .danger-alert {
+        background: #1a0505; padding: 12px 18px; margin-bottom: 12px; position: relative;
+      }
+      .danger-alert::before {
+        content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+        background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(230, 57, 70, 0.05) 10px, rgba(230, 57, 70, 0.05) 20px);
+        pointer-events: none;
+      }
+      .danger-icon { font-family: var(--font-heading); font-size: 28px; color: var(--danger-light); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; position: relative; z-index: 1; }
+      .danger-text { font-size: 22px; line-height: 1.4; position: relative; z-index: 1; }
+      .bottom-section { display: flex; gap: 40px; }
+      .left-col { flex: 1; }
+      .right-col { width: 450px; flex-shrink: 0; }
+      .subheading { font-family: var(--font-heading); font-size: 22px; color: var(--text-primary); margin-bottom: 8px; text-transform: uppercase; }
+      .bullet-list li::before { color: var(--danger); }
+      .small-text { font-size: 14px; line-height: 1.5; margin-bottom: 6px; }
+      .hardware-tag {
+        font-family: monospace; font-size: 12px; color: var(--accent);
+        background: var(--accent-subtle); padding: 4px 8px;
+        display: inline-block; margin-top: 8px; border: 1px solid var(--accent-glow);
+      }
+      .escape-video { width: 450px; height: 253px; object-fit: cover; border: 1px solid rgba(230, 57, 70, 0.3); }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="act-header">
+            <div class="act-title">AKT 3 — SANNINGEN OCH FLYKTEN</div>
+        </div>
+        
+        <div class="intro-text">
+            <em class="accent-em">När den sista komponenten placeras visas det kompletta meddelandet för första gången.</em><br>
+            Videon är kristallklar. En officer i svensk uniform. Bakom honom: kaos, larm, skrik.
+        </div>
+        
+        <div class="danger-alert">
+            <div class="danger-icon">VARNING. NÖDSITUATION.</div>
+            <div class="danger-text">
+                Vi har tappat kontrollen. Något har brutit igenom. Vi lyckades försegla det — men alla är döda utom jag. Självförstörelse måste aktiveras. Vad ni än gör — LÅT INTE någon stoppa sekvensen. Enda vägen ut: nödlucka B7. Två nycklar. Två lås. Gå nu. Rädda er.
+            </div>
+        </div>
+        
+        <div class="bottom-section">
+            <div class="left-col">
+                <div class="subheading">I samma ögonblick:</div>
+                <ul class="bullet-list">
+                    <li>Ljuden skiftar — djupt, vibrerande, organiskt</li>
+                    <li>Övervakningskamerorna visar störningar, skuggor i periferin</li>
+                    <li>AI-rösten hackar: 'Försegling... integritet komprometterad... evakuera...'</li>
+                    <li>Känslan av närvaro. Något är på väg.</li>
+                </ul>
+                
+                <div class="subheading" class="subheading-mt">Flykten — två nycklar, två lås</div>
+                <p class="small-text">Två nycklar från säkerhetsskåpet. Varje nyckel har en kod. Vid nödlucka B7: två lås på varsin sida. Gruppen delar upp sig och matar in koderna simultant: '3... 2... 1... AKTIVERA.'</p>
+                <div class="hardware-tag">2x knappsats • synkroniserad validering • e-lås • ljus/ljudscen • RP2040</div>
+            </div>
+            <div class="right-col">
+                <video autoplay muted loop playsinline class="escape-video">
+                    <source src="../videos/Nycklarna.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

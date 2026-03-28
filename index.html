@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SIGNALEN — En smart escape room med adaptiv svårighetsgrad, dynamiska konsekvenser och eskalerande atmosfär">
+    <title>SIGNALEN — Presentation</title>
+    <link rel="stylesheet" href="presentation.css">
+</head>
+<body>
+
+<!-- Persistent ambient audio — lives in the parent frame, never interrupted by slide changes -->
+<audio id="ambientAudio" loop preload="auto">
+    <source src="audio/ambient_atmosphere.mp3" type="audio/mpeg">
+</audio>
+
+<header>
+    <div class="logo">SIGNAL<span>EN</span></div>
+
+    <div class="header-center">
+        <button class="audio-btn" id="audioBtn" onclick="toggleAudio()" aria-label="Växla atmosfärljud">
+            <span class="audio-icon" id="audioIcon">&#128264;</span>
+            <span id="audioLabel">ATMOSFÄR</span>
+        </button>
+    </div>
+
+    <div class="header-right">
+        <div class="slide-counter">BILD <span id="currentNum">1</span> / <span id="totalNum">15</span></div>
+        <button class="fullscreen-btn" id="fullscreenBtn" onclick="toggleFullscreen()" aria-label="Fullscreen">
+            <span id="fsIcon">⛶</span>
+        </button>
+    </div>
+</header>
+
+<div class="viewport" id="viewport">
+    <div class="iframe-wrapper">
+        <iframe id="slideFrame" src="" width="1280" height="720" scrolling="no" title="Slide content" allow="autoplay"></iframe>
+    </div>
+    <div class="touch-overlay" id="touchOverlay"></div>
+</div>
+
+<div class="hint" id="hint">← → piltangenter eller knappar nedan &nbsp;|&nbsp; klicka ATMOSFÄR för ljud</div>
+
+<nav aria-label="Slide navigation">
+    <button class="nav-btn" id="prevBtn" onclick="prevSlide()" aria-label="Föregående slide">&#8592; FÖREGÅENDE</button>
+    <div class="slide-dots" id="dots" role="tablist" aria-label="Slide dots"></div>
+    <button class="nav-btn" id="nextBtn" onclick="nextSlide()" aria-label="Nästa slide">NÄSTA &#8594;</button>
+</nav>
+
+<script src="presentation.js"></script>
+
+</body>
+</html>

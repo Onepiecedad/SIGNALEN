@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280, initial-scale=1.0">
+    <title>SIGNALEN</title>
+    <link rel="stylesheet" href="slides.css">
+    <style>
+      .slide-container { padding: 40px 80px 0 80px; }
+      .header { margin-bottom: 10px; }
+      .section-num { font-size: 40px; }
+      h1 { font-size: 40px; }
+      .intro-text { font-size: 16px; margin-bottom: 20px; }
+      .act-header { padding-bottom: 6px; }
+      .act-title { font-size: 32px; }
+      .act-intro { font-style: italic; font-size: 16px; color: var(--accent); margin-bottom: 12px; }
+      .phases-container { display: flex; gap: 40px; margin-bottom: 10px; flex: 1; }
+      .phase-col { flex: 1; background: var(--card-bg-light); border: 1px solid var(--accent-dim); padding: 12px; }
+      .phase-title { font-family: var(--font-heading); font-size: 22px; color: var(--text-primary); margin-bottom: 5px; }
+      .phase-room { font-size: 14px; color: var(--accent); font-style: italic; margin-bottom: 10px; }
+      .phase-desc { font-size: 15px; line-height: 1.5; margin-bottom: 10px; }
+      .phase-list { list-style-type: none; margin-bottom: 8px; }
+      .phase-list li { font-size: 14px; line-height: 1.4; position: relative; padding-left: 15px; margin-bottom: 4px; }
+      .phase-list li::before { content: "•"; color: var(--accent); position: absolute; left: 0; }
+      .phase-list.numbered { counter-reset: item; }
+      .phase-list.numbered li::before { content: counter(item) "."; counter-increment: item; font-family: var(--font-heading); font-size: 12px; }
+      .phase-meta { font-size: 14px; line-height: 1.4; }
+      .phase-meta p { margin-top: 6px; }
+      .phase-meta span { color: var(--text-primary); font-weight: bold; }
+      .danger-alert { text-align: center; margin-bottom: 10px; box-shadow: 0 0 20px rgba(230, 57, 70, 0.2); }
+      .danger-text { font-size: 28px; letter-spacing: 1px; text-shadow: 0 0 10px rgba(230, 57, 70, 0.8); }
+      .danger-icon { color: var(--danger); margin-right: 10px; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="section-num">07</div>
+            <h1>Komplett genomgång — alla puzzles</h1>
+        </div>
+        
+        <p class="intro-text">Tre akter med en central twist. Alla rum aktiva simultant. Varje steg logiskt motiverat — inget slumpmässigt.</p>
+        
+        <div class="act-header">
+            <div class="act-title">AKT 1 — STÄNG AV SIGNALEN</div>
+        </div>
+        
+        <div class="act-intro">Spelarna har fått i uppdrag att stänga av signalen. Systemet vill att de ska lyckas. Instruktioner finns, logiken är tydlig. Spelarna känner sig i kontroll.</div>
+        
+        <div class="phases-container">
+            <div class="phase-col">
+                <div class="phase-title">Fas 1: Återställ strömmen</div>
+                <div class="phase-room">Rum 1</div>
+                <div class="phase-desc">Nödbelysningsläge. Säkringscentral med tre tomma platser: BLÅ, GUL, RÖD. Instruktionsskylt med ordningen. Säkringarna i nödskåp vid dörren. Utmaningen är ordningen, inte jakten.</div>
+                <div class="phase-meta">
+                    <p><span>Konsekvens:</span> Felaktig ordning triggar strömavbrott — totalt mörker i 10 sekunder. Tre fel: 5 minuter dras från klockan (återhämtningsbart).</p>
+                    <p><span>Resultat:</span> Ström på. Alla instrument aktiveras. Översiktspanel visar: SIGNAL: AKTIV — NOLLSTÄLLNINGSINSTRUKTIONER.</p>
+                </div>
+            </div>
+            
+            <div class="phase-col">
+                <div class="phase-title">Fas 2: Följ nollställningsinstruktionerna</div>
+                <div class="phase-room">Rum 1 + 2 + Arkivet</div>
+                <div class="phase-desc">Översiktspanelen visar steg-för-steg instruktioner:</div>
+                <ul class="phase-list numbered">
+                    <li>Kalibrera radiostationen (Rum 1) — frekvens via Morse-ledtråd</li>
+                    <li>Navigera sonaren till signalkällan (Rum 1) — koordinater från radion</li>
+                    <li>Öppna passagen (RFID-bricka + kod från hemligstämplad rapport)</li>
+                    <li>Aktivera fyra terminaler i Rum 2 (kräver info från Rum 1 och Arkivet)</li>
+                    <li>Synkronisera frekvensgeneratorn med mottagaren</li>
+                </ul>
+                <div class="phase-meta">
+                    <p><span>Resultat:</span> Nollställning utförs. Stationens röst: 'Signal nollställd.' Två sekunders tystnad. Sedan:</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="danger-alert">
+            <div class="danger-text"><span class="danger-icon">⚠</span> VARNING. SÄKERHETSBRIST DETEKTERAD. SJÄLVFÖRSTÖRELSEPROTOKOLL AKTIVERAT. 60 MINUTER.</div>
+        </div>
+    </div>
+</body>
+</html>

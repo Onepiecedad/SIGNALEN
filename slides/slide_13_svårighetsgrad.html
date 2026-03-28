@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280, initial-scale=1.0">
+    <title>SIGNALEN</title>
+    <link rel="stylesheet" href="slides.css">
+    <style>
+      .slide-container { padding: 50px 80px 0 80px; }
+      .intro-text { font-size: 18px; margin-bottom: 12px; max-width: 1000px; }
+      .table-container { background: var(--card-bg-light); border: 1px solid var(--accent-dim); margin-bottom: 40px; }
+      th, td { padding: 6px 20px; }
+      th { font-size: 20px; background: rgba(0, 180, 216, 0.05); }
+      td { font-size: 16px; }
+      td:first-child { width: 25%; }
+      h2 { font-size: 28px; margin-bottom: 20px; }
+      .timeline-container { display: flex; flex-direction: column; }
+      .gradient-bar { width: 100%; height: 12px; background: linear-gradient(to right, #0077B6, #4A4E69, #9D0208, #E63946); margin-bottom: 20px; }
+      .timeline-stages { display: flex; justify-content: space-between; gap: 20px; }
+      .stage { flex: 1; background: rgba(255, 255, 255, 0.02); border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 12px; }
+      .stage-time { font-family: var(--font-heading); font-size: 24px; color: var(--text-primary); margin-bottom: 5px; }
+      .stage-level { font-size: 14px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+      .stage-desc { font-size: 14px; line-height: 1.4; color: #A0C0D0; }
+      .level-1 { color: var(--accent); }
+      .level-2 { color: #8E9AAF; }
+      .level-3 { color: #D00000; }
+      .level-4 { color: var(--danger); }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="section-num">08</div>
+            <h1>Adaptiv svårighetsgrad & konsekvenser</h1>
+        </div>
+        
+        <p class="intro-text">
+            Systemet justerar svårigheten och konsekvenserna i realtid utan att spelarna märker det. Aldrig under ett aktivt puzzle — bara mellan.
+        </p>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Puzzle</th>
+                        <th>Enklare (om efter)</th>
+                        <th>Svårare (om före)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Säkringar</td>
+                        <td>Ledtråd lyser vid plats</td>
+                        <td>Dummy-säkring läggs till</td>
+                    </tr>
+                    <tr>
+                        <td>Radio/Morse</td>
+                        <td>Hastighet halveras</td>
+                        <td>Hastighet dubbleras</td>
+                    </tr>
+                    <tr>
+                        <td>Sonar</td>
+                        <td>Varmt/kallt-feedback</td>
+                        <td>Rutnät döljs</td>
+                    </tr>
+                    <tr>
+                        <td>Terminaler</td>
+                        <td>Extra hints på display</td>
+                        <td>Tidslimit per terminal</td>
+                    </tr>
+                    <tr>
+                        <td>Frekvens</td>
+                        <td>Feedback mer exakt</td>
+                        <td>Feedback subtilare</td>
+                    </tr>
+                    <tr>
+                        <td>Videofix</td>
+                        <td>Tydligare ledtrådar</td>
+                        <td>Fler steg per fix</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <h2>Eskalerande atmosfär kopplad till klockan</h2>
+        
+        <div class="timeline-container">
+            <div class="gradient-bar"></div>
+            <div class="timeline-stages">
+                <div class="stage">
+                    <div class="stage-time">0–15 min</div>
+                    <div class="stage-level level-1">LUGNT</div>
+                    <div class="stage-desc">Övergivet. Droppande vatten.</div>
+                </div>
+                <div class="stage">
+                    <div class="stage-time">15–30 min</div>
+                    <div class="stage-level level-2">SUBTILA ANOMALIER</div>
+                    <div class="stage-desc">Ljus flimrar oregelbundet.</div>
+                </div>
+                <div class="stage">
+                    <div class="stage-time">30–45 min</div>
+                    <div class="stage-level level-3">SYSTEMSTÖRNINGAR</div>
+                    <div class="stage-desc">Skärmar beter sig konstigt. AI-rösten stockar sig.</div>
+                </div>
+                <div class="stage">
+                    <div class="stage-time">45–60 min</div>
+                    <div class="stage-level level-4">INTENSIVT</div>
+                    <div class="stage-desc">Närvaro. Aggressiva ljud. Jagade.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

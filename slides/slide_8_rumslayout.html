@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280, initial-scale=1.0">
+    <title>SIGNALEN</title>
+    <link rel="stylesheet" href="slides.css">
+    <style>
+      .slide-container { padding: 40px 80px 0 80px; }
+      .header { margin-bottom: 15px; }
+      .section-num { font-size: 40px; }
+      h1 { font-size: 40px; }
+      .intro-text { font-size: 18px; margin-bottom: 20px; }
+      .grid { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 20px; }
+      .room-card {
+        background: var(--card-bg); border: 1px solid var(--accent-dim);
+        padding: 15px; display: flex; flex-direction: row; gap: 15px;
+      }
+      .room-video {
+        width: 200px; height: 112px; object-fit: cover;
+        border: 1px solid var(--accent-glow); flex-shrink: 0;
+      }
+      .room-content { flex: 1; }
+      .room-title { font-family: var(--font-heading); font-size: 20px; color: var(--text-primary); margin-bottom: 4px; text-transform: uppercase; }
+      .room-size { font-size: 13px; color: var(--accent); margin-bottom: 8px; font-style: italic; }
+      .room-desc { font-size: 14px; line-height: 1.4; margin-bottom: 8px; }
+      .room-features { list-style-type: none; }
+      .room-features li { font-size: 13px; line-height: 1.3; position: relative; padding-left: 12px; margin-bottom: 3px; }
+      .room-features li::before { content: "•"; color: var(--accent); position: absolute; left: 0; }
+      .no-video-placeholder {
+        width: 200px; height: 112px; background: rgba(0, 180, 216, 0.05);
+        border: 1px dashed rgba(0, 180, 216, 0.2);
+        display: flex; align-items: center; justify-content: center;
+        font-size: 11px; color: var(--text-secondary); text-transform: uppercase;
+        letter-spacing: 1px; flex-shrink: 0; text-align: center; padding: 10px;
+      }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="section-num">05</div>
+            <h1>Rumslayout</h1>
+        </div>
+        
+        <p class="intro-text">
+            Tre sammankopplade rum. SIGNALEN är inte linjär — spelarna rör sig fritt mellan alla rum under hela spelet.
+        </p>
+        
+        <div class="grid">
+            <div class="room-card">
+                <video class="room-video" autoplay muted loop playsinline>
+                    <source src="../videos/Radion.mp4" type="video/mp4">
+                </video>
+                <div class="room-content">
+                    <div class="room-title">Rum 1 — Kommunikationsrummet</div>
+                    <div class="room-size">15–18 kvm</div>
+                    <div class="room-desc">Spelarnas startpunkt. Trång, industriell miljö med metallväggar, rörledningar och dimmigt ljus.</div>
+                    <ul class="room-features">
+                        <li>Radiostation med analoga rattar (RP2040-styrd)</li>
+                        <li>Sonarskärm bakom frostat akrylglas</li>
+                        <li>Metallskåp med kodlås</li>
+                        <li>Loggbok från 1967</li>
+                        <li>Nödbelysning som pulserar</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="room-card">
+                <video class="room-video" autoplay muted loop playsinline>
+                    <source src="../videos/Korridoren.mp4" type="video/mp4">
+                </video>
+                <div class="room-content">
+                    <div class="room-title">Passagen</div>
+                    <div class="room-size">Övergångszon</div>
+                    <div class="room-desc">Kort, smal korridor med vattentäta ståldörrar. Blått, pulserande ljus. Droppande vatten och metallknakande.</div>
+                </div>
+            </div>
+            
+            <div class="room-card">
+                <video class="room-video" autoplay muted loop playsinline>
+                    <source src="../videos/Sandaren.mp4" type="video/mp4">
+                </video>
+                <div class="room-content">
+                    <div class="room-title">Rum 2 — Signalrummet</div>
+                    <div class="room-size">20–25 kvm</div>
+                    <div class="room-desc">Stationens hemliga kärna. Större, mörkare. Den hexagonala mottagaren i mitten pulserar med svagt ljus.</div>
+                    <ul class="room-features">
+                        <li>Fyra terminalstationer</li>
+                        <li>Akustisk kammare</li>
+                        <li>Frekvensgenerator</li>
+                        <li>Nödutrymningslucka</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="room-card">
+                <video class="room-video" autoplay muted loop playsinline>
+                    <source src="../videos/Arkivet.mp4" type="video/mp4">
+                </video>
+                <div class="room-content">
+                    <div class="room-title">Rum 3 — Arkivet</div>
+                    <div class="room-size">6–8 kvm</div>
+                    <div class="room-desc">Litet sidorum som öppnas från Rum 1. Hemligstämplade dokument, fotografier, de mest oroande bevisen. Information härifrån behövs för puzzles i båda rummen.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

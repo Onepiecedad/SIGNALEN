@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280, initial-scale=1.0">
+    <title>SIGNALEN</title>
+    <link rel="stylesheet" href="slides.css">
+    <style>
+      .slide-container { padding: 50px 80px 0 80px; }
+      .act-header {
+        border-left-color: var(--accent); margin-bottom: 20px;
+        padding-top: 15px; padding-bottom: 15px;
+      }
+      .act-intro {
+        font-style: italic; font-size: 18px; color: var(--danger); margin-bottom: 18px;
+        line-height: 1.5; border: 1px solid rgba(230, 57, 70, 0.2);
+        background: rgba(230, 57, 70, 0.05); padding: 12px;
+      }
+      .subheading { font-family: var(--font-heading); font-size: 24px; color: var(--text-primary); margin-bottom: 8px; text-transform: uppercase; }
+      .desc-text { font-size: 16px; line-height: 1.5; margin-bottom: 12px; }
+      .progression-table { background: var(--card-bg-light); border: 1px solid var(--accent-dim); }
+      .progression-table th { font-size: 18px; padding: 8px 10px; border-bottom: 1px solid var(--accent-glow); }
+      .progression-table td { padding: 8px 10px; font-size: 15px; border-bottom: 1px solid rgba(184, 201, 208, 0.1); vertical-align: middle; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .progression-table tr:last-child td { border-bottom: none; }
+      .video-row { background: rgba(0, 180, 216, 0.08); }
+      .fix-row { background: transparent; }
+      .video-row td:first-child { font-family: var(--font-heading); font-size: 20px; color: var(--text-primary); }
+      .fix-label { font-family: var(--font-heading); color: var(--danger); font-size: 16px; }
+      .audio-text { font-style: italic; color: var(--text-primary); }
+      .clarity-container { display: flex; align-items: center; gap: 6px; }
+      .clarity-bar-bg { width: 60px; height: 5px; background: rgba(255, 255, 255, 0.1); overflow: hidden; }
+      .clarity-bar-fill { height: 100%; background: var(--accent); box-shadow: 0 0 5px var(--accent); }
+      strong { color: var(--text-primary); }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="act-header">
+            <div class="act-title">AKT 2 — SJÄLVFÖRSTÖRELSE AKTIVERAD</div>
+        </div>
+        
+        <div class="act-intro">
+            Klockan tickar. Ett videomeddelande hackar och brusar. En person i uniform, i panik. Det enda hörbara: "...självförstöring... avbryt... följ instruktionerna..."
+        </div>
+        
+        <div class="subheading">Videomeddelandet — hjärtat i Akt 2</div>
+        <div class="desc-text">Fem segment. Bara det första visas från början. För varje trasig komponent klarnar meddelandet.</div>
+        
+        <table class="progression-table">
+            <thead>
+                <tr>
+                    <th class="col-w-10">Segment</th>
+                    <th class="col-w-15">Klarhet</th>
+                    <th class="col-w-35">Ljud</th>
+                    <th class="col-w-40">Fix</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="video-row">
+                    <td>1/5</td>
+                    <td>
+                        <div class="clarity-container">
+                            <div class="clarity-bar-bg"><div class="clarity-bar-fill" class="clarity-20"></div></div>
+                            <span>20%</span>
+                        </div>
+                    </td>
+                    <td class="audio-text">"...självförstöring... avbryt..."</td>
+                    <td>—</td>
+                </tr>
+                <tr class="fix-row">
+                    <td class="fix-label">Fix A</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td><strong>Rum 1:</strong> Trasigt relä — reservdel i Arkivet</td>
+                </tr>
+                <tr class="video-row">
+                    <td>2/5</td>
+                    <td>
+                        <div class="clarity-container">
+                            <div class="clarity-bar-bg"><div class="clarity-bar-fill" class="col-w-40"></div></div>
+                            <span>40%</span>
+                        </div>
+                    </td>
+                    <td class="audio-text">"...fyra stationer... synkronisera..."</td>
+                    <td>—</td>
+                </tr>
+                <tr class="fix-row">
+                    <td class="fix-label">Fix B</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td><strong>Rum 2:</strong> Nyckelskåp synligt — låst tills Rum 1 återställs</td>
+                </tr>
+                <tr class="video-row">
+                    <td>3/5</td>
+                    <td>
+                        <div class="clarity-container">
+                            <div class="clarity-bar-bg"><div class="clarity-bar-fill" class="clarity-60"></div></div>
+                            <span>60%</span>
+                        </div>
+                    </td>
+                    <td class="audio-text">"...nödprotokollet... två nycklar..."</td>
+                    <td>—</td>
+                </tr>
+                <tr class="fix-row">
+                    <td class="fix-label">Fix C</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td><strong>Arkivet:</strong> Kalibrera frekvensmodul</td>
+                </tr>
+                <tr class="video-row">
+                    <td>4/5</td>
+                    <td>
+                        <div class="clarity-container">
+                            <div class="clarity-bar-bg"><div class="clarity-bar-fill" class="clarity-80"></div></div>
+                            <span>80%</span>
+                        </div>
+                    </td>
+                    <td class="audio-text">"...följ deaktiveringsprotokollet..."</td>
+                    <td>—</td>
+                </tr>
+                <tr class="fix-row">
+                    <td class="fix-label">Fix D</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td><strong>Rum 1 + 2:</strong> Sista komponenten — kräver båda rummen</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

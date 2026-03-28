@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280, initial-scale=1.0">
+    <title>SIGNALEN</title>
+    <link rel="stylesheet" href="slides.css">
+    <style>
+      .slide-container { padding: 60px 80px 0 80px; }
+      .header { margin-bottom: 10px; }
+      h2 {
+        font-size: 24px; color: var(--text-secondary);
+        letter-spacing: 2px; margin-bottom: 40px;
+      }
+      .documents-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 20px; }
+      .doc-card {
+        background: var(--card-bg-light);
+        border: 1px solid var(--accent-glow);
+        padding: 18px;
+        font-family: var(--font-mono); font-size: 14px;
+        line-height: 1.6; color: #A0C0D0; position: relative;
+      }
+      .doc-card::before {
+        content: "TOP SECRET // CLASSIFIED"; display: block;
+        font-size: 12px; color: var(--danger); margin-bottom: 15px;
+        border-bottom: 1px solid rgba(230, 57, 70, 0.3);
+        padding-bottom: 6px; letter-spacing: 1px;
+      }
+      .timeline-container { margin-top: auto; margin-bottom: 60px; position: relative; }
+      .timeline-line {
+        position: absolute; top: 20px; left: 0;
+        width: 100%; height: 2px;
+        background: var(--accent-glow); z-index: 1;
+      }
+      .timeline-events { display: flex; justify-content: space-between; position: relative; z-index: 2; }
+      .event { width: 22%; position: relative; }
+      .event-dot {
+        width: 16px; height: 16px;
+        background: var(--bg-primary); border: 3px solid var(--accent);
+        border-radius: 50%; margin-bottom: 15px; margin-top: 13px;
+      }
+      .event-year { font-family: var(--font-heading); font-size: 28px; color: var(--text-primary); margin-bottom: 10px; }
+      .event-text { font-size: 15px; line-height: 1.5; color: var(--text-body); }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="section-num">04</div>
+            <h1>Berättelsen</h1>
+        </div>
+        <h2>Bakgrund — briefing innan start</h2>
+        
+        <div class="documents-grid">
+            <div class="doc-card">
+                År 1962 byggde svenska marinen en hemlig akustisk avlyssningsstation under Göta älv. Station Älvsborg, kodnamn SIGNALEN, hade officiellt i uppdrag att övervaka sovjetisk ubåtstrafik. 1967 tappades all kontakt. Den officiella förklaringen var budgetnedskärningar.
+            </div>
+            <div class="doc-card">
+                Den inofficiella sanningen: något fruktansvärt hände där nere. Ingen av de stationerade överlevde. De lyckades dock hindra det som hände från att sprida sig — till ett högt pris. Stationen förseglades. Allt hemligstämplades. De få som kände sanningen är sedan länge döda.
+            </div>
+            <div class="doc-card">
+                Tills förra veckan. Bygget av Västlänken har inneburit sprängningar i området. Något har rubbats. För första gången på 59 år har signalen börjat sända igen. Automatiskt. Utan att någon är där nere. Ni är utredningsteamet. Er uppgift: ta er ner, ta reda på varför, och stäng av den.
+            </div>
+        </div>
+        
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+            <div class="timeline-events">
+                <div class="event">
+                    <div class="event-dot"></div>
+                    <div class="event-year">1962</div>
+                    <div class="event-text">Station Älvsborg byggs under Göta älv</div>
+                </div>
+                <div class="event">
+                    <div class="event-dot"></div>
+                    <div class="event-year">1967</div>
+                    <div class="event-text">All kontakt tappas. Ingen överlevde.</div>
+                </div>
+                <div class="event">
+                    <div class="event-dot"></div>
+                    <div class="event-year">1967–2025</div>
+                    <div class="event-text">Förseglad. Hemligstämplad. Glömd.</div>
+                </div>
+                <div class="event">
+                    <div class="event-dot"></div>
+                    <div class="event-year">2026</div>
+                    <div class="event-text">Västlänken rubbar förseglingen. Signalen vaknar.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
