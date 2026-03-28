@@ -69,21 +69,35 @@ function scaleFrame() {
     const vp = document.getElementById('viewport');
     const vpW = vp.clientWidth;
     const vpH = vp.clientHeight;
+    const isMobilePortrait = window.innerWidth < 768 && window.innerHeight > window.innerWidth;
 
     const wrapper = frame.parentElement;
 
-    // Always scale the 1280×720 iframe to fit the viewport
-    const scaleX = vpW / 1280;
-    const scaleY = vpH / 720;
-    const scale = Math.min(scaleX, scaleY) * 0.97;
+    if (isMobilePortrait) {
+        // Mobile portrait: full viewport, slides use responsive CSS
+        frame.style.width = vpW + 'px';
+        frame.style.height = vpH + 'px';
+        frame.style.transform = 'none';
+        frame.style.transformOrigin = '';
+        frame.scrolling = 'auto';
+        wrapper.style.width = '100%';
+        wrapper.style.height = '100%';
+        wrapper.style.overflow = 'hidden';
+    } else {
+        // Desktop / landscape: fit 1280×720 within viewport with transform scale
+        const scaleX = vpW / 1280;
+        const scaleY = vpH / 720;
+        const scale = Math.min(scaleX, scaleY) * 0.97;
 
-    frame.style.width = '1280px';
-    frame.style.height = '720px';
-    frame.style.transform = 'scale(' + scale + ')';
-    frame.style.transformOrigin = 'top center';
-    wrapper.style.width = Math.floor(1280 * scale) + 'px';
-    wrapper.style.height = Math.floor(720 * scale) + 'px';
-    wrapper.style.overflow = 'hidden';
+        frame.style.width = '1280px';
+        frame.style.height = '720px';
+        frame.style.transform = 'scale(' + scale + ')';
+        frame.style.transformOrigin = 'top center';
+        frame.scrolling = 'no';
+        wrapper.style.width = Math.floor(1280 * scale) + 'px';
+        wrapper.style.height = Math.floor(720 * scale) + 'px';
+        wrapper.style.overflow = 'hidden';
+    }
 }
 
 // ── Force video autoplay inside iframe (iOS workaround) ───────────────────
@@ -101,6 +115,34 @@ function forceVideoAutoplay() {
     }
 }
 
+// ── Swipe detection inside iframe (doesn't block scrolling) ──────────────
+function setupIframeSwipe() {
+    try {
+        const iframeDoc = frame.contentDocument || frame.contentWindow.document;
+        let startX = 0, startY = 0, startTime = 0;
+
+        iframeDoc.addEventListener('touchstart', function(e) {
+            startX = e.changedTouches[0].screenX;
+            startY = e.changedTouches[0].screenY;
+            startTime = Date.now();
+        }, { passive: true });
+
+        iframeDoc.addEventListener('touchend', function(e) {
+            const dx = e.changedTouches[0].screenX - startX;
+            const dy = e.changedTouches[0].screenY - startY;
+            const dt = Date.now() - startTime;
+
+            // Horizontal swipe: dx > dy, distance > 50px, time < 400ms
+            if (Math.abs(dx) > Math.abs(dy) * 1.5 && Math.abs(dx) > 50 && dt < 400) {
+                if (dx < 0) nextSlide();
+                else prevSlide();
+            }
+        }, { passive: true });
+    } catch (e) {
+        // Cross-origin — can't access iframe
+    }
+}
+
 // ── Navigate to slide ─────────────────────────────────────────────────────
 function goTo(idx) {
     current = idx;
@@ -108,6 +150,7 @@ function goTo(idx) {
     frame.onload = function() {
         scaleFrame();
         forceVideoAutoplay();
+        setupIframeSwipe();
     };
     currentNum.textContent = current + 1;
     document.getElementById('prevBtn').disabled = current === 0;
@@ -137,12 +180,10 @@ function toggleFullscreen() {
                   (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
     if (isIOS) {
-        // iOS doesn't support Fullscreen API — toggle minimal UI mode
         document.body.classList.toggle('ios-fullscreen');
         const icon = document.getElementById('fsIcon');
         if (document.body.classList.contains('ios-fullscreen')) {
             icon.textContent = '✕';
-            // Scroll to hide address bar
             window.scrollTo(0, 1);
         } else {
             icon.textContent = '⛶';
@@ -181,34 +222,6 @@ function onFullscreenChange() {
 document.addEventListener('fullscreenchange', onFullscreenChange);
 document.addEventListener('webkitfullscreenchange', onFullscreenChange);
 
-// ── Touch swipe navigation (mobile) — uses overlay to capture touches ─────
-let touchStartX = 0;
-let touchStartY = 0;
-let touchStartTime = 0;
-
-const overlay = document.getElementById('touchOverlay');
-
-if (overlay) {
-    overlay.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-        touchStartY = e.changedTouches[0].screenY;
-        touchStartTime = Date.now();
-    }, { passive: true });
-
-    overlay.addEventListener('touchend', (e) => {
-        const dx = e.changedTouches[0].screenX - touchStartX;
-        const dy = e.changedTouches[0].screenY - touchStartY;
-        const dt = Date.now() - touchStartTime;
-
-        // Only trigger if: horizontal > vertical, distance > 40px, time < 500ms
-        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40 && dt < 500) {
-            if (dx < 0) nextSlide();   // Swipe left → next
-            else prevSlide();           // Swipe right → prev
-        }
-    }, { passive: true });
-}
-
 // Init
 goTo(0);
 scaleFrame();
-

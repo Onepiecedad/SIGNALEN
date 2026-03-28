@@ -55,21 +55,25 @@
                 <p>Webbaserad realtidspanel i personalrummet. React + WebSocket till alla RP2040-controllers.</p>
                 
                 <div class="feature-grid">
-                    <div class="feature-card">
+                    <div class="feature-card" onclick="this.classList.toggle('expanded')">
                         <div class="feature-title">Översikt</div>
                         <div class="feature-text">Status, tid kvar, lösta puzzles, svårighetsnivå, atmosfärnivå</div>
+                        <div class="feature-detail">Realtidsöversikt av hela sessionen. Game master ser varje rums status, kvarvarande tid med visuell nedräkning, vilka puzzles som är lösta/olösta, aktuell svårighetsnivå (1–5) och atmosfärintensitet. Allt uppdateras via WebSocket — ingen manuell refresh behövs.</div>
                     </div>
-                    <div class="feature-card">
+                    <div class="feature-card" onclick="this.classList.toggle('expanded')">
                         <div class="feature-title">Puzzle-detalj</div>
-                        <div class="feature-text">Namn, status, tid, försök, konsekvenser. Realtids-sensordata. 'Fast'-indikator (>3 min utan framsteg)</div>
+                        <div class="feature-text">Namn, status, tid, försök, konsekvenser. Realtids-sensordata.</div>
+                        <div class="feature-detail">Varje puzzle har en dedikerad vy med live sensordata (reed switches, potentiometrar, RFID-status), antal försök, tid spenderad, och vilka konsekvenser som triggas vid misslyckande. 'Fast'-indikatorn aktiveras om spelarna inte gjort framsteg på 3+ minuter och föreslår automatiskt en hint.</div>
                     </div>
-                    <div class="feature-card">
+                    <div class="feature-card" onclick="this.classList.toggle('expanded')">
                         <div class="feature-title">Hint-panel</div>
                         <div class="feature-text">Tre nivåer. AI-förslag. Leverans via stationens AI-röst eller OLED</div>
+                        <div class="feature-detail">Trestegs hint-system: (1) Subtil riktning — ljus/ljud som guide, (2) Tydlig ledtråd — AI-röst eller OLED-text, (3) Direkt lösning — steg-för-steg. AI analyserar spelarnas beteende och föreslår optimal hint-nivå. Game master godkänner eller anpassar innan leverans.</div>
                     </div>
-                    <div class="feature-card">
+                    <div class="feature-card" onclick="this.classList.toggle('expanded')">
                         <div class="feature-title">Historik</div>
                         <div class="feature-text">Varje session sparas. Trender över tid. Komponenthälsa per enhet</div>
+                        <div class="feature-detail">Fullständig sessionslogg med tidslinjer, hint-användning, och svårighetsanpassning. Trendanalys visar vilka puzzles som är för svåra/lätta. Prediktivt underhåll övervakar varje sensors och aktuators hälsa — varnar innan komponenter behöver bytas.</div>
                     </div>
                 </div>
                 
