@@ -69,37 +69,21 @@ function scaleFrame() {
     const vp = document.getElementById('viewport');
     const vpW = vp.clientWidth;
     const vpH = vp.clientHeight;
-    const isMobilePortrait = window.innerWidth < 768 && window.innerHeight > window.innerWidth;
 
     const wrapper = frame.parentElement;
 
-    if (isMobilePortrait) {
-        // Mobile portrait: let the slide's own responsive CSS handle layout
-        frame.style.width = '100%';
-        frame.style.height = '100%';
-        frame.style.transform = 'none';
-        frame.style.transformOrigin = '';
-        wrapper.style.width = '100%';
-        wrapper.style.height = '100%';
-        wrapper.style.overflow = 'hidden';
-        wrapper.style.display = '';
-        wrapper.style.justifyContent = '';
-    } else {
-        // Desktop / landscape: fit within viewport with transform scale
-        const scaleX = vpW / 1280;
-        const scaleY = vpH / 720;
-        const scale = Math.min(scaleX, scaleY) * 0.97;
+    // Always scale the 1280×720 iframe to fit the viewport
+    const scaleX = vpW / 1280;
+    const scaleY = vpH / 720;
+    const scale = Math.min(scaleX, scaleY) * 0.97;
 
-        frame.style.width = '1280px';
-        frame.style.height = '720px';
-        frame.style.transform = 'scale(' + scale + ')';
-        frame.style.transformOrigin = 'top center';
-        wrapper.style.width = Math.floor(1280 * scale) + 'px';
-        wrapper.style.height = Math.floor(720 * scale) + 'px';
-        wrapper.style.overflow = 'hidden';
-        wrapper.style.display = '';
-        wrapper.style.justifyContent = '';
-    }
+    frame.style.width = '1280px';
+    frame.style.height = '720px';
+    frame.style.transform = 'scale(' + scale + ')';
+    frame.style.transformOrigin = 'top center';
+    wrapper.style.width = Math.floor(1280 * scale) + 'px';
+    wrapper.style.height = Math.floor(720 * scale) + 'px';
+    wrapper.style.overflow = 'hidden';
 }
 
 // ── Force video autoplay inside iframe (iOS workaround) ───────────────────

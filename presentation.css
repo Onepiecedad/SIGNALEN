@@ -242,6 +242,13 @@ nav {
         margin-top: 44px;
         height: calc(100vh - 44px);
         align-items: center;
+        justify-content: center;
+    }
+
+    .iframe-wrapper {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
     }
 
     nav { display: none; }
@@ -276,5 +283,6 @@ nav {
         margin-top: 40px;
         height: calc(100vh - 40px);
         align-items: center;
+        justify-content: center;
     }
 }
